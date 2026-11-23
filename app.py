@@ -1,4 +1,3 @@
-
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 from peft import PeftModel
 import streamlit as st
@@ -22,13 +21,11 @@ def resumir(text):
     return summary
 
 
-# I per últim, l'interficia per fer servir gradio
-demo = gr.Interface(
-    resumir,
-    gr.Textbox(label="Text", placeholder="EScriu aqui...", lines=10),
-    gr.Textbox(label="Summary"),
-    title="Text Summarization",
-    description="Introdueix un text i obté un resum (el text ha de ser en anglés)."
-)
+# I per últim, la interfície per fer servir Streamlit
+st.title("Text Summarization")
+st.write("Introdueix un text i obté un resum (el text ha de ser en anglès).")
 
-demo.launch()
+text = st.text_area("Text", placeholder="EScriu aqui...", height=250)
+
+if st.button("Summarize"):
+    st.text_area("Summary", value=resumir(text), height=100)
