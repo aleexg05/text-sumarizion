@@ -1,7 +1,7 @@
 
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 from peft import PeftModel
-import gradio as gr
+import streamlit as st
 
 # Carregar el model
 base_model = AutoModelForSeq2SeqLM.from_pretrained("google/flan-t5-base")
